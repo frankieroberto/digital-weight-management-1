@@ -1,0 +1,93 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+
+{% from "back-link/macro.njk" import govukBackLink %}
+{% from "button/macro.njk" import govukButton %}
+{% from "radios/macro.njk" import govukRadios %}
+{% from "input/macro.njk" import govukInput %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/eating-meals"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="/results" method="post">
+
+
+        {% from "checkboxes/macro.njk" import govukCheckboxes %}
+
+        {% set otherHtml %}
+        {{ govukTextarea({
+          id: "other-reason",
+          name: "other-reason",
+          classes: "govuk-!-width-two-thirds",
+          label: {
+            text: "Please provide more detail"
+          }
+        }) }}
+        {% endset -%}
+
+        {{ govukCheckboxes({
+          idPrefix: "nationality",
+          name: "nationality",
+          fieldset: {
+            legend: {
+              text: "What do you feel are the reasons your child does not get enough exercise?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "These answers will help us give you personalised support and guidance. You can select more than one."
+          },
+          items: [
+            {
+              value: "interest",
+              text: "My child isn’t interested in energetic activities"
+            },
+            {
+              value: "price",
+              text: "I can’t afford the paid activites in my area"
+            },
+            {
+              value: "time",
+              text: "I dont’t have time to encourage my child to take part in activities"
+            },
+            {
+              value: "other",
+              text: "Other reasons",
+              conditional: {
+                html: otherHtml
+              }
+
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+
+
+
+{% endblock %}

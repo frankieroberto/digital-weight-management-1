@@ -1,0 +1,106 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+
+{% from "back-link/macro.njk" import govukBackLink %}
+{% from "button/macro.njk" import govukButton %}
+{% from "radios/macro.njk" import govukRadios %}
+{% from "input/macro.njk" import govukInput %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/meal-planner-downloaded"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">Easy meals planner – first week</h1>
+
+      {% if data['meal-planner-first-step'] == 'week' %}
+
+        <p>Great, you’ve chosen to <b>plan a full week of healthy meals</b>.</p>
+
+        <p>The app will help you select recipes and create a shopping list.</p>
+
+        <p>It is also helpful to communicate this to your family by <b>putting up a meal plan</b> in a visible place, such as on your fridge or walls.</p>
+
+        <p>You can also get your child involved in the shopping and cooking to help make them feel involved.</p>
+
+
+      {% elseif data['meal-planner-first-step'] == 'day' %}
+
+        <p>Great, you’ve chosen to <b>try at least one healthy meal over the next week</b>.</p>
+
+        <p>The app will help you select a recipe to try, and to create a shopping list.</p>
+
+        <p>You could also try getting your child involved in the shopping and cooking for the meal you try out.</p>
+
+      {% endif %}
+
+
+      <p>In a week’s time, on Monday 4th August, we will ask you how it’s gone and will help you plan next steps.</p>
+
+
+      <form action="/meal-planner-done" method="post">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend">
+              How would you like to be reminded?
+            </legend>
+            <div class="govuk-radios" data-module="radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="how-contacted-conditional-1" name="reminder-method" type="radio" value="email" data-aria-controls="conditional-how-contacted-conditional-1">
+                <label class="govuk-label govuk-radios__label" for="how-contacted-conditional-1">
+                by e-mail to {{ data['email'] }}
+              </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="how-contacted-conditional-3" name="reminder-method" type="radio" value="sms" data-aria-controls="conditional-how-contacted-conditional-3">
+                <label class="govuk-label govuk-radios__label" for="how-contacted-conditional-3">
+                by text message
+              </label>
+              </div>
+              <div class="govuk-radios__conditional" id="conditional-how-contacted-conditional-3">
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="contact-by-text">
+            Mobile phone number
+          </label>
+                  <input class="govuk-input govuk-!-width-one-third" id="contact-by-text" name="contact-by-text" type="text">
+                </div>
+
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+      <div style="background-color: #1CA5A7; padding: 10px;">
+
+        <img src="/public/images/easy-meals.jpg" style="max-width: 100%;">
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}

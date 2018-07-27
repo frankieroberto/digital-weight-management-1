@@ -1,0 +1,83 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+
+{% from "back-link/macro.njk" import govukBackLink %}
+{% from "button/macro.njk" import govukButton %}
+{% from "radios/macro.njk" import govukRadios %}
+{% from "input/macro.njk" import govukInput %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/meal-planner"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">Easy meals planner – next steps</h1>
+
+      <p>Now that you’ve downloaded the app or guide, you can use it to plan healthy meals for you and your family.</p>
+
+      <p>A change to mealtime foods and routines can be difficult, but most parents find that with time it gets easier, and they enjoy cooking and eating healthier meals with their children.</p>
+
+      <p>It is up to you how quickly to make this change.</p>
+
+      <p>Will you:</p>
+
+      <form action="/meal-planner-reminder" method="post">
+
+        {{ govukRadios({
+          classes: "govuk-radios",
+          idPrefix: "meal-planner-first-step",
+          name: "meal-planner-first-step",
+          fieldset: {
+            legend: {
+              text: "",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: ""
+          },
+          items: [
+            {
+              value: "week",
+              text: "Plan a full week’s worth of healthy meals"
+            },
+            {
+              value: "day",
+              text: "Try at least one healthy meal over the next week"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+      <div style="background-color: #1CA5A7; padding: 10px;">
+
+        <img src="/public/images/easy-meals.jpg" style="max-width: 100%;">
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}

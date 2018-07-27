@@ -1,0 +1,80 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+
+{% from "back-link/macro.njk" import govukBackLink %}
+{% from "button/macro.njk" import govukButton %}
+{% from "radios/macro.njk" import govukRadios %}
+{% from "input/macro.njk" import govukInput %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/create-account"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">Recommendations</h1>
+
+      <p>Based upon your answers, the main issues of concern to you seem to be:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>eating healthy main meals</li>
+        <li>getting enough exercise</li>
+      </ul>
+
+      <p>We can provide support for each of these concerns, but it may be easier to tackle them one at a time.</p>
+
+
+      <form action="/support-main-meals" method="post">
+
+        {{ govukRadios({
+          classes: "govuk-radios",
+          idPrefix: "changed-name",
+          name: "changed-name",
+          fieldset: {
+            legend: {
+              text: "Which would you like support with first?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+            text: ""
+          },
+          items: [
+            {
+              value: "main-meals",
+              text: "Helping my child eat 3 healthy main meals a day"
+            },
+            {
+              value: "exercise",
+              text: "Helping my child get enough exercise each day"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+
+
+
+{% endblock %}

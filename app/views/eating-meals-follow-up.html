@@ -1,0 +1,97 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+
+{% from "back-link/macro.njk" import govukBackLink %}
+{% from "button/macro.njk" import govukButton %}
+{% from "radios/macro.njk" import govukRadios %}
+{% from "input/macro.njk" import govukInput %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/eating-meals"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="/snacking" method="post">
+
+
+        {% from "checkboxes/macro.njk" import govukCheckboxes %}
+
+        {% set otherHtml %}
+        {{ govukTextarea({
+          id: "other-reason",
+          name: "other-reason",
+          classes: "govuk-!-width-two-thirds",
+          label: {
+            text: "Please provide more detail"
+          }
+        }) }}
+        {% endset -%}
+
+        {{ govukCheckboxes({
+          idPrefix: "nationality",
+          name: "nationality",
+          fieldset: {
+            legend: {
+              text: "What do you feel are the main issues stopping your child eating 3 healthy meals a day?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "These answers will help us give you personalised support and guidance. You can select more than one."
+          },
+          items: [
+            {
+              value: "cooking",
+              text: "I don’t feel confident in cooking and preparing healthy meals"
+            },
+            {
+              value: "price",
+              text: "I can’t afford to buy healthy ingredients"
+            },
+            {
+              value: "time",
+              text: "I don’t have time to cook"
+            },
+            {
+              value: "refusal",
+              text: "My child refuses healthy meals I prepare for them"
+            },
+            {
+              value: "other",
+              text: "Other reasons",
+              conditional: {
+                html: otherHtml
+              }
+
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+
+
+
+{% endblock %}

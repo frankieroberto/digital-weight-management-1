@@ -1,0 +1,101 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+
+{% from "back-link/macro.njk" import govukBackLink %}
+{% from "button/macro.njk" import govukButton %}
+{% from "radios/macro.njk" import govukRadios %}
+{% from "input/macro.njk" import govukInput %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/eating-meals"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="/sugary-drinks" method="post">
+
+
+        {% from "checkboxes/macro.njk" import govukCheckboxes %}
+
+        {% set otherHtml %}
+        {{ govukTextarea({
+          id: "other-reason",
+          name: "other-reason",
+          classes: "govuk-!-width-two-thirds",
+          label: {
+            text: "Please provide more detail"
+          }
+        }) }}
+        {% endset -%}
+
+        {{ govukCheckboxes({
+          idPrefix: "nationality",
+          name: "nationality",
+          fieldset: {
+            legend: {
+              text: "What do you feel are the main issues your child eats too many unhealthy snacks?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "These answers will help us give you personalised support and guidance. You can select more than one."
+          },
+          items: [
+            {
+              value: "availability-home",
+              text: "My child is able to access unhealthy snacks at home for themselves"
+            },
+            {
+              value: "availability-other",
+              text: "Other people (eg grandparents or childminders) offer too many unhealthy snacks"
+            },
+            {
+              value: "demand",
+              text: "My child demands snacks all the time"
+            },
+            {
+              value: "price",
+              text: "I can’t afford to buy healthy snacks"
+            },
+            {
+              value: "parenting",
+              text: "I find it hard to say no when my child asks for unhealthy snacks"
+            },
+            {
+              value: "other",
+              text: "Other reasons",
+              conditional: {
+                html: otherHtml
+              }
+
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+
+
+
+{% endblock %}

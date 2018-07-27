@@ -1,0 +1,49 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+
+{% from "back-link/macro.njk" import govukBackLink %}
+{% from "button/macro.njk" import govukButton %}
+{% from "radios/macro.njk" import govukRadios %}
+{% from "input/macro.njk" import govukInput %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% from "panel/macro.njk" import govukPanel %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukPanel({
+        titleText: "Easy meal planner",
+        html: "Good luck with your first week!"
+      }) }}
+
+
+      <h3 class="govuk-heading-m">What happens next</h3>
+
+      {% if data['reminder-method'] == 'email' %}
+
+        <p class="govuk-body">
+          We’ll send you an e-mail in one week to ask you how it’s gone, and to set a next goal.
+        </p>
+
+      {% elseif data['reminder-method'] == 'sms' %}
+
+        <p class="govuk-body">
+          We’ll send you a text message in one week to ask you how it’s gone, and to set a next goal.
+        </p>
+
+      {% endif %}
+
+      <p class="govuk-body">
+        <a href="#" class="govuk-link">What did you think of this service?</a> (takes 30 seconds)
+      </p>
+    </div>
+  </div>
+{% endblock %}
+

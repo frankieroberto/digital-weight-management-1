@@ -1,0 +1,52 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+
+{% from "back-link/macro.njk" import govukBackLink %}
+{% from "button/macro.njk" import govukButton %}
+{% from "radios/macro.njk" import govukRadios %}
+{% from "input/macro.njk" import govukInput %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/create-account"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">Your child’s weight</h1>
+
+      <p>Your child was weighed and measured on Tuesday 31st July 2018,<br> aged 5 and 2 months:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Weight: <b>10.2kg</b></li>
+        <li>Height: <b>103cm</b></li>
+        <li>Weight status: <b>overweight</b></li>
+      </ul>
+
+      <p>When compared to the national growth charts, which show whether a child is growing as expected for their age, sex and height, your child would be considered to be overweight. </p>
+
+      <p>It is important to be aware that when a child has excess weight for their age it can lead to health problems like high blood pressure and early signs of type 2 diabetes as they grow up. Being overweight can also lead to low self-esteem and poor confidence.</p>
+
+      <p>This service offers support and guidance for parents of overweight children, and can help you improve your child’s diet and activity levels to support a healthy lifestyle.</p>
+
+      <p><a href="/initial-questions" class="govuk-button">Continue</a></p>
+
+    </div>
+  </div>
+
+
+
+
+{% endblock %}

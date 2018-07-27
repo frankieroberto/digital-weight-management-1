@@ -1,0 +1,67 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+
+{% from "back-link/macro.njk" import govukBackLink %}
+{% from "button/macro.njk" import govukButton %}
+{% from "radios/macro.njk" import govukRadios %}
+{% from "input/macro.njk" import govukInput %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/meal-planner"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">Easy meals planner – get started</h1>
+
+      <p>Great! You’ve chosen to use our healthy meal planner.</p>
+
+      <p>The first step is to download the app or PDF. Here’s how to do that:</p>
+
+      <h2 class="govuk-heading-m">iPhone or iPad</h2>
+
+      <p>Search for ‘easy meals PHE’ on the App Store.</p>
+
+      <p>If you are reading this on your iPhone or iPad now, you can follow this link: <a href="#">Easy Meals app</a>.</p>
+
+      <h2 class="govuk-heading-m">Android phone or tablet (eg Samsung)</h2>
+
+      <p>Search for ‘easy meals PHE’ on the Play Store.</p>
+
+      <p>If you are reading this on your Android phone or tablet now, you can follow this link: <a href="#">Easy Meals app</a>.</p>
+
+      <h2 class="govuk-heading-m">Downloadable guide</h2>
+
+      <p>Download and save this file to your computer: <a href="#">Easy Meals (PDF)</a>.</p>
+
+      <p>You don’t need to print it straight away but you may want to print some sections later.</p>
+
+      <p>&nbsp;</p>
+
+      <p><a href="/meal-planner-downloaded" class="govuk-button">Continue: I’ve downloaded it</a></p>
+
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+      <div style="background-color: #1CA5A7; padding: 10px;">
+
+        <img src="/public/images/easy-meals.jpg" style="max-width: 100%;">
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}
