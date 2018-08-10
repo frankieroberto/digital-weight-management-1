@@ -30,8 +30,8 @@
       <p>Your child was weighed and measured on Tuesday 31st July 2018,<br> aged 5 and 2 months:</p>
 
       <ul class="govuk-list govuk-list--bullet">
-        <li>Weight: <b>10.2kg</b></li>
-        <li>Height: <b>103cm</b></li>
+        <li>Weight: <b>{{ data['weight'] or '13.1' }}kg</b></li>
+        <li>Height: <b>{{ data['height'] or '104' }}cm</b></li>
         <li>Weight status: <b>overweight</b></li>
       </ul>
 

@@ -1,0 +1,206 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+
+{% from "back-link/macro.njk" import govukBackLink %}
+{% from "button/macro.njk" import govukButton %}
+{% from "radios/macro.njk" import govukRadios %}
+{% from "input/macro.njk" import govukInput %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/start"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <style>
+    .legend--inline {
+      margin-bottom: 0;
+    }
+
+  </style>
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="/child-weight-details" method="post">
+
+      {% set dateMeasurementTaken %}
+        {{ govukDateInput({
+          id: "date-measurement-taken",
+          name: "date-measurement-taken",
+          fieldset: {
+            legend: {
+              text: "Date measurements taken",
+              isPageHeading: false,
+              classes: "legend--inline"
+            }
+          },
+          hint: {
+            text: "This is needed to be able to give an accurate calculation of your child’s health status. If you cannot remember the exact date, enter your best guess."
+          },
+          items: [
+            {
+              name: "day"
+            },
+            {
+              name: "month"
+            },
+            {
+              name: "year"
+            }
+          ]
+        }) }}
+      {% endset -%}
+
+
+        {% call govukFieldset({
+          legend: {
+            text: "Your child’s details",
+            classes: "govuk-fieldset__legend--l",
+            isPageHeading: true
+          }
+        }) %}
+
+          <p class="govuk-hint">This service is aimed at the parents of overweight children aged 5 to 11. To help us provide personised recommendations relevant to your child, please enter their details below.</p>
+
+
+          {{ govukDateInput({
+            id: "dob",
+            name: "dob",
+            fieldset: {
+              legend: {
+                text: "Date of birth",
+                isPageHeading: true,
+                classes: "legend--inline"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                name: "day"
+              },
+              {
+                name: "month"
+              },
+              {
+                name: "year"
+              }
+            ]
+          }) }}
+
+          {{ govukRadios({
+            classes: "govuk-radios--inline",
+            idPrefix: "gender",
+            name: "gender",
+            fieldset: {
+              legend: {
+                text: "Gender",
+                isPageHeading: false,
+                classes: "legend--inline"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "male",
+                text: "Male"
+              },
+              {
+                value: "female",
+                text: "Female"
+              }
+            ]
+          }) }}
+
+
+        {% set weightErrorMessage = {text: "Please enter a weight"} if error %}
+
+          {{ govukInput({
+            label: {
+              text: "Weight in kilograms",
+              isPageHeading: false,
+              classes: "govuk-label"
+            },
+            hint: {
+              text: ""
+            },
+            classes: "govuk-input--width-5",
+            id: "weight",
+            name: "weight",
+            errorMessage: weightErrorMessage
+          }) }}
+
+          {{ govukInput({
+            label: {
+              text: "Height in cm",
+              isPageHeading: false,
+              classes: "govuk-label"
+            },
+            hint: {
+              text: ""
+            },
+            classes: "govuk-input--width-5",
+            id: "height",
+            name: "height"
+          }) }}
+
+          {{ govukRadios({
+            classes: "govuk-radios",
+            idPrefix: "measured-today",
+            name: "measured-today",
+            fieldset: {
+              legend: {
+                text: "When were height and weight measured?",
+                isPageHeading: false,
+                classes: "legend--inline"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "today",
+                text: "Today"
+              },
+              {
+                value: "not-today",
+                text: "Not today",
+                conditional: {
+                  html: dateMeasurementTaken
+                }
+              }
+            ]
+          }) }}
+
+
+        {% endcall %}
+
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+
+
+
+
+{% endblock %}
