@@ -15,7 +15,7 @@
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
-    href: "/start"
+    href: "/eating-meals"
   }) }}
 {% endblock %}
 
@@ -25,12 +25,12 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form action="/snacking-follow-up" method="post">
+      <form action="/unhealthy-snacks-eaten" method="post">
 
         {{ govukRadios({
           classes: "govuk-radios",
-          idPrefix: "changed-name",
-          name: "changed-name",
+          idPrefix: "unhealthy-snacks-eaten",
+          name: "unhealthy-snacks-eaten",
           fieldset: {
             legend: {
               text: "Do you feel your child eats too many unhealthy snacks?",

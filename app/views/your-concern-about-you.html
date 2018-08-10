@@ -15,7 +15,7 @@
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
-    href: "/main-concerns"
+    href: "/your-concern"
   }) }}
 {% endblock %}
 
@@ -25,34 +25,34 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form action="/healthy-meals-eaten" method="post">
+      <form action="/main-concerns" method="post">
 
         {{ govukRadios({
           classes: "govuk-radios",
-          idPrefix: "healthy-meals-eaten",
-          name: "healthy-meals-eaten",
+          idPrefix: "concern-about-own-weight",
+          name: "concern-about-own-weight",
           fieldset: {
             legend: {
-              text: "Do you feel that your child eats 3 healthy main meals a day?",
+              text: "And how concerned are you about your own weight?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
           },
           hint: {
-            text: "Health guidelines are that all children eat 3 meals a day comprising at least 5 portions of fruit and vegetables."
+            text: ""
           },
           items: [
             {
-              value: "yes",
-              text: "Yes"
+              value: "not-concerned",
+              text: "Not at all concerned"
             },
             {
-              value: "sometimes",
-              text: "Only sometimes"
+              value: "quite-concerned",
+              text: "Quite concerned"
             },
             {
-              value: "no",
-              text: "No"
+              value: "very-concerned",
+              text: "Very concerned"
             }
           ]
         }) }}

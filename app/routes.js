@@ -37,6 +37,42 @@ router.post('/letter-code', function (req, res) {
 
 })
 
+router.post('/healthy-meals-eaten', function (req, res) {
+
+  let healthyMealsEaten = req.session.data['healthy-meals-eaten']
+
+  if (healthyMealsEaten === 'yes') {
+    res.redirect('/snacking')
+  } else {
+    res.redirect('/eating-meals-follow-up')
+  }
+
+})
+
+router.post('/unhealthy-snacks-eaten', function (req, res) {
+
+  let unhealthySnacksEaten = req.session.data['unhealthy-snacks-eaten']
+
+  if (unhealthySnacksEaten == 'no') {
+    res.redirect('/sugary-drinks')
+  } else {
+    res.redirect('/snacking-follow-up')
+  }
+
+})
+
+router.post('/enough-exercise', function (req, res) {
+
+  let enoughExercise = req.session.data['enough-exercise']
+
+  if (enoughExercise == 'yes') {
+    res.redirect('/results')
+  } else {
+    res.redirect('/exercise-follow-up')
+  }
+
+})
+
 router.post('/child-weight-details', function (req, res) {
   // Get the answer from session data
   // The name between the quotes is the same as the 'name' attribute on the input elements
@@ -59,6 +95,7 @@ router.get('/enter-child-weight-details', function(req,res) {
 router.get('/received-letter', function(req,res) {
   res.render('received-letter', { 'error': req.query.error })
 })
+
 
 // Add your routes here - above the module.exports line
 

@@ -15,7 +15,7 @@
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
-    href: "/main-concerns"
+    href: "/your-concern-about-you"
   }) }}
 {% endblock %}
 
@@ -25,34 +25,43 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form action="/healthy-meals-eaten" method="post">
+      <form action="/eating-meals" method="post">
 
-        {{ govukRadios({
-          classes: "govuk-radios",
-          idPrefix: "healthy-meals-eaten",
-          name: "healthy-meals-eaten",
+
+        {% from "checkboxes/macro.njk" import govukCheckboxes %}
+
+        {% set otherHtml %}
+        {{ govukTextarea({
+          id: "other-reason",
+          name: "other-reason",
+          classes: "govuk-!-width-two-thirds",
+          label: {
+            text: "Please provide more detail"
+          }
+        }) }}
+        {% endset -%}
+
+        {{ govukCheckboxes({
+          idPrefix: "nationality",
+          name: "nationality",
           fieldset: {
             legend: {
-              text: "Do you feel that your child eats 3 healthy main meals a day?",
+              text: "Which of these concern you?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
           },
           hint: {
-            text: "Health guidelines are that all children eat 3 meals a day comprising at least 5 portions of fruit and vegetables."
+            text: "These answers will help us give you personalised support and guidance. You can select more than one."
           },
           items: [
             {
-              value: "yes",
-              text: "Yes"
+              value: "food",
+              text: "The food my child eats"
             },
             {
-              value: "sometimes",
-              text: "Only sometimes"
-            },
-            {
-              value: "no",
-              text: "No"
+              value: "activity",
+              text: "The level of my child’s activity"
             }
           ]
         }) }}
