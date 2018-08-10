@@ -1,0 +1,100 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+
+{% from "back-link/macro.njk" import govukBackLink %}
+{% from "button/macro.njk" import govukButton %}
+{% from "radios/macro.njk" import govukRadios %}
+{% from "input/macro.njk" import govukInput %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/results"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">Helping your child get enough activity</h1>
+
+      <p>Based upon your answers, we think you should try:</p>
+
+    </div>
+  </div>
+
+  <div class="top-recommendation-box">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-m"><a href="https://www.nhs.uk/change4life/activities/train-like-a-jedi">Train Like a Jedi</a></h2>
+
+        <p>Get your kids moving as they learn to master the ways of the Jedi with a fun, play along video.</p>
+
+        <p>Each week for 12 weeks there is a new challenge to master, helping your child get their recommended 60 minutes of daily physical activity through lots of short bursts of fun.</p>
+
+
+
+        <a class="govuk-button govuk-button--start" href="https://www.nhs.uk/change4life/activities/train-like-a-jedi">Get started</a>
+      </div>
+
+      <div class="govuk-grid-column-one-third">
+        <div style="background-color: #FFDF30; padding: 30px 15px 30px 10px;">
+
+          <img src="/public/images/train-like-a-jedi.png" style="max-width: 100%; display:  auto;">
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-third">
+
+      <p class="govuk-heading-s">Other useful resources:</p>
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-third">
+
+      <div class="recommendation-box">
+        <h2 class="govuk-heading-s"><a href="https://www.nhs.uk/live-well/exercise/physical-activity-guidelines-children-and-young-people/#close/">Physical activity guidelines for children</a></h1>
+        <p class="govuk-body-s">NHS guidance on what counts as moderate and vigorous activity</p>
+      </div>
+
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+
+      <div class="recommendation-box">
+        <h2 class="govuk-heading-s"><a href="https://www.nhs.uk/oneyou/active10/home">Active 10</a></h1>
+        <p class="govuk-body-s">A walking tracker app helping you achieve 10 minutes of brisk walking each day</p>
+      </div>
+
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+
+      <div class="recommendation-box">
+        <h2 class="govuk-heading-s"><a href="http://directory.islington.gov.uk/kb5/islington/directory/service.page?id=iE8foP4aTNo">Sport and activity for young people in Islington</a></h1>
+        <p class="govuk-body-s">A guide to local services, including sports clubs and fitness classes</p>
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+{% endblock %}

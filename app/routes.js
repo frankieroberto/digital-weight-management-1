@@ -97,6 +97,22 @@ router.get('/received-letter', function(req,res) {
 })
 
 
+router.post('/get-support', function (req, res) {
+  // Get the answer from session data
+  // The name between the quotes is the same as the 'name' attribute on the input elements
+  // However in JavaScript we can't use hyphens in variable names
+
+  let supportWith = req.session.data['support-with']
+
+  if (supportWith == 'main-meals') {
+    res.redirect('/support-main-meals')
+  } else if (supportWith == 'activity') {
+    res.redirect('/support-activity')
+  }
+
+})
+
+
 // Add your routes here - above the module.exports line
 
 module.exports = router

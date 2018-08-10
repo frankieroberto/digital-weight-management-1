@@ -15,7 +15,7 @@
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
-    href: "/create-account"
+    href: "/results"
   }) }}
 {% endblock %}
 
@@ -29,10 +29,72 @@
 
       <p>Based upon your answers, we think you should try:</p>
 
-      <ul class="govuk-list govuk-list--bullet">
-        <li>Our <a href="/meal-planner">healthy meal planner</a>, including recipes and suggestions</li>
-        <li>Tips for <a href="/meals-behaviour">encouraging your child to try new foods</a></li>
-      </ul>
+
+    </div>
+  </div>
+
+  <div class="top-recommendation-box">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-m"><a href="/meal-planner-download">Easy Meals – meal planner app</a></h2>
+
+        <p>Plan a healthy meals for you and your child. This free guide offers:</p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>recipes for meals you can cook quickly and easily</li>
+          <li>a weekly planner to help you plan meals in advance</li>
+          <li>shopping lists based on the recipes you’ve planned</li>
+        </ul>
+
+        <p>Available for iPhone and Android</p>
+
+        <a class="govuk-button govuk-button--start" href="/meal-planner-download">Get started</a>
+      </div>
+
+      <div class="govuk-grid-column-one-third">
+        <div style="background-color: #1CA5A7; padding: 10px;">
+
+          <img src="/public/images/easy-meals.jpg" style="max-width: 100%;">
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-third">
+
+      <p class="govuk-heading-s">Other useful resources:</p>
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-third">
+
+      <div class="recommendation-box">
+        <h2 class="govuk-heading-s"><a href="https://www.nhs.uk/conditions/pregnancy-and-baby/fussy-eaters/">Tips for parents of fussy eaters</a></h1>
+        <p class="govuk-body-s">NHS guidance and a helpful video</p>
+      </div>
+
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+
+      <div class="recommendation-box">
+        <h2 class="govuk-heading-s"><a href="https://mealmixer.change4life.co.uk">Meal Mixer</a></h1>
+        <p class="govuk-body-s">A free healthy recipe e-mailed to you every Friday for 4 weeks</p>
+      </div>
+
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+
+      <div class="recommendation-box">
+        <h2 class="govuk-heading-s"><a href="https://www.nhs.uk/live-well/eat-well/the-eatwell-guide/">The EatWell Guide</a></h1>
+        <p class="govuk-body-s">A guide to healthy food choices and what counts as your 5-a-day</p>
+      </div>
 
     </div>
   </div>

@@ -30,12 +30,12 @@
       <p>We can provide support for each of these concerns, but it may be easier to tackle them one at a time.</p>
 
 
-      <form action="/support-main-meals" method="post">
+      <form action="/get-support" method="post">
 
         {{ govukRadios({
           classes: "govuk-radios",
-          idPrefix: "changed-name",
-          name: "changed-name",
+          idPrefix: "support-with",
+          name: "support-with",
           fieldset: {
             legend: {
               text: "Which would you like support with first?",
@@ -52,8 +52,8 @@
               text: "Helping my child eat 3 healthy main meals a day"
             },
             {
-              value: "exercise",
-              text: "Helping my child get enough exercise each day"
+              value: "activity",
+              text: "Helping my child get enough activity each day"
             }
           ]
         }) }}

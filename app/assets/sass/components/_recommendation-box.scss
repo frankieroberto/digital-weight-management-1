@@ -1,0 +1,37 @@
+
+
+.recommendation-box {
+  box-sizing: border-box;
+  border: 1px solid $govuk-border-colour;
+  box-shadow: 7px 7px 0 white, 8px 8px 0 $govuk-border-colour;
+  padding: 20px;
+  min-height: 150px;
+
+  p {
+    margin-bottom: 0;
+  }
+}
+
+
+.top-recommendation-box {
+  box-sizing: border-box;
+  padding: 20px;
+  background-color: govuk-colour("blue");
+  color: govuk-colour("white");
+  margin-bottom: 50px;
+
+  .govuk-heading-s {
+    margin: 0 0 10px 0;
+  }
+
+  p, a, .govuk-list, .govuk-heading-m {
+    color: inherit;
+  }
+
+  .govuk-button {
+    margin: 0;
+    background-color: govuk-colour("white");
+    color: govuk-colour("blue");
+  }
+
+}
